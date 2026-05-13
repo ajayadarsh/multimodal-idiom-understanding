@@ -37,6 +37,8 @@ This is framed as a **binary classification** problem. Random baseline = 33.3%.
 ## Demo
 
 ![Demo Output](results/demo_output_1.png)
+![Demo Output](results/demo_output_2.png)
+![Demo Output](results/demo_output_3.png)
 
 ---
 
