@@ -112,10 +112,13 @@ flowchart TD
 
 ## Project Structure
 
-├── src/                # Colab notebook
-│   ├── multimodal_idiom_understanding.pynb          # Exploratory data analysis
-├── results/            # Output figures and screenshots
-└── eda/             # Exploratory Data Analysis
+```text
+.
+├── src/                                      # Colab notebook
+│   └── multimodal_idiom_understanding.ipynb  # Main notebook
+├── results/                                  # Output figures and screenshots
+└── eda/                                      # Exploratory Data Analysis
+```
 
 ---
 
