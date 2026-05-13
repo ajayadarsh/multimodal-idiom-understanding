@@ -1,10 +1,3 @@
----
-title: "CUB-200-2011 Fine-Grained Classification (Task 1)"
-author: "Ajay Adarsh Sivakumar"
-date: "17/02/2026"
-
----
-
 # Multimodal Idiom Understanding
 ### End-to-end NLP & Vision-Language Pipeline
 
