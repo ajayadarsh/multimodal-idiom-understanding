@@ -42,17 +42,41 @@ This is framed as a **binary classification** problem. Random baseline = 33.3%.
 
 ## Pipeline
 
-Raw Dataset (231 rows)
-↓
-Step 1: NLP Exploratory Data Analysis
-↓
-Step 2: LLM Augmentation via Groq/Llama 3.1 → 696 rows (3×)
-↓
-Step 3: Zero-shot Prediction (SBERT / CLIP / Combined)
-↓
-Step 4: Fine-tuning (SBERT / CLIP+LR / Contrastive CLIP)
-↓
-Evaluation: Accuracy, Precision, Recall, F1
+```mermaid
+flowchart TD
+    A[🗂️ Raw Dataset<br/>231 training rows<br/>1 correct image per 3 candidates] --> B
+
+    B[📊 Step 1 — NLP Exploratory Data Analysis<br/>Class balance · Vocabulary analysis<br/>Sentence length · Compound difficulty] --> C
+
+    C[🤖 Step 2 — LLM Data Augmentation<br/>Groq Llama 3.1 8B via API<br/>231 rows → 696 rows — 3x increase] --> D
+
+    D[⚡ Step 3 — Zero-shot Prediction<br/>No training required] --> D1 & D2 & D3
+
+    D1[3A: SBERT<br/>Text similarity<br/>55.6% accuracy] --> E
+    D2[3B: CLIP<br/>Image similarity<br/>33.3% accuracy] --> E
+    D3[3C: SBERT + CLIP<br/>Weighted ensemble<br/>48.1% accuracy] --> E
+
+    E[🏋️ Step 4 — Fine-tuning] --> E1 & E2 & E3
+
+    E1[4A: Fine-tuned SBERT<br/>✅ 92.6% accuracy<br/>F1 = 0.889] --> F
+    E2[4B: CLIP + Logistic Reg<br/>77.8% accuracy<br/>F1 = 0.667] --> F
+    E3[4C: Fine-tuned CLIP<br/>77.8% accuracy<br/>F1 = 0.667] --> F
+
+    F[📈 Evaluation<br/>Accuracy · Precision · Recall · F1<br/>All methods vs 33.3% random baseline]
+
+    style A  fill:#1F4E79,color:#fff,stroke:#1F4E79
+    style B  fill:#2E75B6,color:#fff,stroke:#2E75B6
+    style C  fill:#2E75B6,color:#fff,stroke:#2E75B6
+    style D  fill:#7D5A00,color:#fff,stroke:#7D5A00
+    style D1 fill:#FFF3CD,color:#7D5A00,stroke:#7D5A00
+    style D2 fill:#FFF3CD,color:#7D5A00,stroke:#7D5A00
+    style D3 fill:#FFF3CD,color:#7D5A00,stroke:#7D5A00
+    style E  fill:#155724,color:#fff,stroke:#155724
+    style E1 fill:#D4EDDA,color:#155724,stroke:#155724
+    style E2 fill:#D4EDDA,color:#155724,stroke:#155724
+    style E3 fill:#D4EDDA,color:#155724,stroke:#155724
+    style F  fill:#721C24,color:#fff,stroke:#721C24
+```
 
 ---
 
